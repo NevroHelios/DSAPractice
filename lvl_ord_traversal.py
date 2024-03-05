@@ -1,4 +1,7 @@
 # Node Class:
+from collections import deque
+
+
 class Node:
     def __init__(self, val):
         self.data = val
@@ -20,19 +23,33 @@ class Solution:
     #Function to return the level order traversal of a tree.
     def levelOrder(self,root):
         # Code here
-        lis = []
         if not root:
             return []
-        def bfs(root, l):
-            if len(lis) == l:
-                lis.append([])
-            lis[l].append(root.data)
-            if root.left:
-                bfs(root.left, l + 1)
-            if root.right:
-                bfs(root.right, l + 1)
-        bfs(root, 0)
-        return [i for j in lis for i in j]
+        q = deque()
+        q.append(root)
+        res = []
+        while q:
+            node = q.popleft()
+            res.append(node.data)
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+        return res  
+
+        # lis = []
+        # if not root:
+        #     return []
+        # def bfs(root, l):
+        #     if len(lis) == l:
+        #         lis.append([])
+        #     lis[l].append(root.data)
+        #     if root.left:
+        #         bfs(root.left, l + 1)
+        #     if root.right:
+        #         bfs(root.right, l + 1)
+        # bfs(root, 0)
+        # return [i for j in lis for i in j]
     
 
 # Example case

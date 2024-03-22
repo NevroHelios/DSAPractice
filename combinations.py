@@ -1,12 +1,21 @@
-def goo(nums, t, lis:list = [], ans:list = [], idx = 0):
-    if lis and sum(lis) == t:
-        return ans.append(lis)
-        
-    goo(nums, t, lis = lis.append(nums[idx]), ans =ans, idx=idx)
-    goo(nums, t, lis = lis.append(nums[idx]), ans =ans, idx = idx+1)
-    
-    
-nums = [2, 3, 6, 7]
-t = 7
+def goo(nums, t, lis = [], idx=0):
+    if idx == len(nums):
+        if t == 0:
+            ans.append(lis[:])
+        return
+    if t >= nums[idx]:
+        lis.append(nums[idx])
+        goo(nums, t-nums[idx], lis, idx)
+        lis.pop()
+    goo(nums, t, lis, idx+1)
 
-print(goo(nums, t)) 
+ans = []
+
+candidates = [2, 3, 6, 7]
+target = 7
+
+goo(nums=candidates, t=target)
+
+print(ans) 
+
+# print(goo(nums, t)) 

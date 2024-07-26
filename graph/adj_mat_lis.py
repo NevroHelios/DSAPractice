@@ -14,7 +14,11 @@ for (i, j, w) in dedges:
 
 ## Adj lIST
 WL = {}
+
+for i in range(size):
+    WL[i] = []
+    
 for (i, j, w) in dedges:
-    WL.get(i, []).append((j, w))
+    WL[i].append((j, w))
     
 print(WL)

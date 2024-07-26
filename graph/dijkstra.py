@@ -1,7 +1,3 @@
-import numpy as np
-dedges = [(0,1,10),(0,2,80),(1,2,6),(1,4,20),(2,3,70),(4,5,50),(4,6,5),(5,6,10)]
-size = 7
-
 def dijkstra_Mat(WMat: np.ndarray, s):
     rows, cols, x = WMat.shape
     infinity = WMat.max()*rows + 1
@@ -50,6 +46,11 @@ def dijkstra_list(WList: list, s):
     
     return  distance
 
+
+
+import numpy as np
+dedges = [(0,1,10),(0,2,80),(1,2,6),(1,4,20),(2,3,70),(4,5,50),(4,6,5),(5,6,10)]
+size = 7
 
 # Adj Matrix
 W = np.zeros(shape=(size, size, 2))
